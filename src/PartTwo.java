@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
-public class PartTwo extends PartOne{
+public class PartTwo extends PartOne {
+
     public void screem() {
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNext("[а-я]+")) {
@@ -22,7 +23,6 @@ public class PartTwo extends PartOne{
 
 
     public void owl(String way) {
-        Scanner scanner = new Scanner(System.in);
         if (way.equals("левую")) {
             screem();
         }
@@ -50,7 +50,6 @@ public class PartTwo extends PartOne{
     }
 
     public void blueSnake() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Штошшшшшшшшш...Вы сделали правильный выбор, я тоже думаю, что голубой куда благородней.." +
                 "\n Итак..господа, найдётся 10 миллионов денег? ");
         if (money >= 10) {
@@ -63,8 +62,8 @@ public class PartTwo extends PartOne{
             snakeOrLion();
         }
     }
-    public void yellowSnake(){
-        Scanner scanner = new Scanner(System.in);
+
+    public void yellowSnake() {
         System.out.println("Ребята, привет! Как ваши дела? Меня зовут Матильда, я королевская змейка, как и моя сестра Лора" +
                 "\n Вообще мама говорила, что мы близняшки, хотя откуда у нас разный цвет...+" +
                 "\n ой, заболталась! Я тут снова изучаю теорию вероятностей, необычайно занимательно, должна вас сказать!" +
@@ -74,7 +73,7 @@ public class PartTwo extends PartOne{
     }
 
 
-    public void  favoriteNumberOfSnake() {
+    public void favoriteNumberOfSnake() {
         Scanner scanner = new Scanner(System.in);
         Integer favoriteNumberOfSnake = scanner.nextInt();
         if (favoriteNumberOfSnake == 22) {
@@ -90,6 +89,7 @@ public class PartTwo extends PartOne{
             favoriteNumberOfSnake();
         }
     }
+
     public void snakeOrLion() {
         Scanner scanner = new Scanner(System.in);
         String snakeOrLion = scanner.nextLine();
