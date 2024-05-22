@@ -3,7 +3,8 @@ import java.util.Scanner;
 
 public class PartOne {
     int money = 0;
-    public  int validateInput() {
+
+    public int validateInput() {
         try {
             Scanner scanner = new Scanner(System.in);
             return scanner.nextInt();
@@ -13,7 +14,7 @@ public class PartOne {
         return validateInput();
     }
 
-    public  void enterAgeTomRight(boolean ageTomRandom) {
+    public void enterAgeTomRight(boolean ageTomRandom) {
         if (ageTomRandom) {
             System.out.println("Ого! Как это у тебя получилось угадать?! Круто! Поехали дальше) ");
         } else {
@@ -28,7 +29,7 @@ public class PartOne {
         }
     }
 
-    public  boolean enterAgeTomRandom() {
+    public boolean enterAgeTomRandom() {
         Scanner scanner = new Scanner(System.in);
         int ageTomRandom = scanner.nextInt();
         if (ageTomRandom != 20) {
@@ -41,7 +42,7 @@ public class PartOne {
         }
     }
 
-    public  void numberDoor() {
+    public void numberDoor() {
         Scanner scanner = new Scanner(System.in);
         int numberDoor = scanner.nextInt();
         if (numberDoor == 1) {
@@ -57,27 +58,53 @@ public class PartOne {
         }
     }
 
-    public  void lionRiddle() {
+    public void lionRiddle() {
         Scanner scanner = new Scanner(System.in);
         String tomorrow = scanner.nextLine();
         if (tomorrow.equals("Завтра")) {
             System.out.println("Вот это уровень! Я, признаюсь, догадался лишь с третьего раза( \" " +
                     "\n + Теперь карманы тебе оттягивают 30 миллионов денег))" +
                     "\n Неважно! Шагаем вглубь пещеры!");
-                money = money + 30;
+            money = money + 20;
         } else {
             System.out.println("Ох, нет. Давай ещё разок!");
             lionRiddle();
         }
     }
 
-    public  String wayLeftOrRight() {
+    public String wayLeftOrRight() {
         Scanner scanner = new Scanner(System.in);
         String way = scanner.nextLine();
-        if (way.equals("Правую")) {
-//            if
-            System.out.println("Пробегай, я за тобой! Но помни, у тебя теперь вдвое меньше монет(");
-        } else if (way.equals("Левую")) {
+        if (way.equals("правую")) {
+            if (money >= 15) {
+                System.out.println("Пробегай, я за тобой! Но помни, у тебя теперь меньше монет(");
+                money = money - 15;
+            } else {
+                System.out.println("Стоп! Погоди-ка... Что-то мне подсказывает, что у тебя нет свободных миллионов, чтобы заплатить за эту дорогу...." + "\n" +
+                        "Что же нам делать?! Дайте-ка подумать..хм. Нужно вернуться ко льву или всё таки выбирать левую дорогу. Так что, левая дорога или лев?");
+                String leftOrLion = scanner.nextLine();
+                if (leftOrLion.equals("Левая дорога")) {
+                    System.out.println("Отважный выбор. Чтож.. где же раздобыть доску? " +
+                            "\n" +
+                            "\n Слууушай. А вот эта странная огромная сова, что это у неё в лапах?" +
+                            "\n Да, точно, доска! Интересно, зачем ей потребовалось дербанить мост?.." +
+                            " Может тоже заработать планирует?" +
+                            "\n Можешь покричать ей, чтоб подлетела?");
+                } else if (leftOrLion.equals("лев")) {
+                    System.out.println("Круто! Гоним назад!");
+                    System.out.println("Рррррррр! Видел, как вы пробежали в соседний вход.. не ожидал увидеть снова" +
+                            "\n Так что, отгадаете мою загадку?" +
+                            "\n Меня никогда не было," +
+                            "\n Меня все ожидают," + "\n Меня никто не видел и не увидит," +
+                            "\n И всё же на меня полагаются все, " +
+                            "\n" + "кто живёт и дышит." +
+                            " \n Так кто же я?");
+                    lionRiddle();
+                    System.out.println("\n" + "Круто-круто! У тебя теперь есть денежки на правую дорогу! ээээ, или ты всё таки решил по левой? Выбираешь левую или правую?");
+                    wayLeftOrRight();
+                }
+            }
+        } else if (way.equals("левую")) {
             System.out.println("Отважный выбор. Чтож.. где же раздобыть доску? " +
                     "\n" +
                     "\n Слууушай. А вот эта странная огромная сова, что это у неё в лапах?" +
@@ -85,42 +112,9 @@ public class PartOne {
                     " Может тоже заработать планирует?" +
                     "\n Можешь покричать ей, чтоб подлетела?");
         } else {
-            System.out.println("Стоп-стоп-стоп! Что ты говоришь, не разберу... Правую или Левую? ну или я чего-то не знаю, и ты умеешь летать?");
+            System.out.println("Стоп-стоп-стоп! Что ты говоришь, не разберу... правую или левую? ну или я чего-то не знаю, и ты умеешь летать?");
             wayLeftOrRight();
         }
         return way;
-    }
-
-
-    public  void owl(String way) {
-        Scanner scanner = new Scanner(System.in);
-        if (way.equals("Левую")) {
-            String screem = scanner.nextLine();
-            if (3 > 2) { //нижний регистр
-                System.out.println("Нет, ну тихо же( Громче можно?");
-            } else {
-                System.out.println("Чего кричишь? Я с первого раза услышала, я просто медленно летаю. Ты вообще знаешь," +
-                        "\n сколько мне лет? Разорался! да и доска тяжёлая!" +
-                        "\n" +
-                        "\n Уф! Привет! Я начитанная сова! Если честно,..устала я уже её таскать(" +
-                        "\n ответишь на мой любимый вопрос, и брошу тебе доску. Или будешь пробовать перепрыгнуть? Шучу " +
-                        "\n" +
-                        "\n Итак..Один известный писатель любил пословицу о двух предметах." +
-                        "\n В итоге написал великое произведение первым, а второй оказался злополучным гвоздём книги. " +
-                        "\n Что за второй предмет?");
-                axeRiddle();
-            }
-        }
-    }
-
-    public  void axeRiddle() {
-        Scanner scanner = new Scanner(System.in);
-        String axe = scanner.nextLine();
-        if (axe.equals("Топор")) {
-            System.out.println("Фух, молодец, что быстро ответил. Я устала( держи доску и проходи, а я полетела!");
-        } else {
-            System.out.println("Нет, ты что-то путаешь, давай хоть немного подумай");
-            axeRiddle();
-        }
     }
 }
