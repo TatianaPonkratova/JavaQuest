@@ -2,6 +2,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class PartOne {
+    PartTwo partTwo = new PartTwo();
     int money = 0;
 
     public int validateInput() {
@@ -9,7 +10,7 @@ public class PartOne {
             Scanner scanner = new Scanner(System.in);
             return scanner.nextInt();
         } catch (InputMismatchException exception) {
-            System.out.println("Мне кажется, ты ошибся. Повтори, пожалуйста");
+            System.out.println("Сколько? не уверен, что я правильно тебя понял(( повтори, пожалуйста");
         }
         return validateInput();
     }
@@ -62,8 +63,8 @@ public class PartOne {
         Scanner scanner = new Scanner(System.in);
         String tomorrow = scanner.nextLine();
         if (tomorrow.equals("Завтра")) {
-            System.out.println("Вот это уровень! Я, признаюсь, догадался лишь с третьего раза( \" " +
-                    "\n + Теперь карманы тебе оттягивают 30 миллионов денег))" +
+            System.out.println("Вот это уровень! Я, признаюсь, догадался лишь с третьего раза( " +
+                    "\n + Теперь карманы тебе оттягивают 20 миллионов денег))" +
                     "\n Неважно! Шагаем вглубь пещеры!");
             money = money + 20;
         } else {
@@ -72,25 +73,26 @@ public class PartOne {
         }
     }
 
-    public String wayLeftOrRight() {
+    public Integer wayLeftOrRight() {
         Scanner scanner = new Scanner(System.in);
-        String way = scanner.nextLine();
-        if (way.equals("правую")) {
+        int way = scanner.nextInt();
+        if (way == 2) {
             if (money >= 15) {
                 System.out.println("Пробегай, я за тобой! Но помни, у тебя теперь меньше монет(");
                 money = money - 15;
             } else {
                 System.out.println("Стоп! Погоди-ка... Что-то мне подсказывает, что у тебя нет свободных миллионов, чтобы заплатить за эту дорогу...." + "\n" +
-                        "Что же нам делать?! Дайте-ка подумать..хм. Нужно вернуться ко льву или всё таки выбирать левую дорогу. Так что, левая дорога или лев?");
-                String leftOrLion = scanner.nextLine();
-                if (leftOrLion.equals("Левая дорога")) {
+                        "Что же нам делать?! Дайте-ка подумать..хм. Нужно вернуться ко льву или всё таки выбирать левую дорогу. 1 - левая дорога? 2 - лев");
+                int leftOrLion = scanner.nextInt();
+                if (leftOrLion == 1) {
                     System.out.println("Отважный выбор. Чтож.. где же раздобыть доску? " +
                             "\n" +
                             "\n Слууушай. А вот эта странная огромная сова, что это у неё в лапах?" +
                             "\n Да, точно, доска! Интересно, зачем ей потребовалось дербанить мост?.." +
                             " Может тоже заработать планирует?" +
                             "\n Можешь покричать ей, чтоб подлетела?");
-                } else if (leftOrLion.equals("лев")) {
+                    partTwo.screem();
+                } else if (leftOrLion == 2) {
                     System.out.println("Круто! Гоним назад!");
                     System.out.println("Рррррррр! Видел, как вы пробежали в соседний вход.. не ожидал увидеть снова" +
                             "\n Так что, отгадаете мою загадку?" +
@@ -100,11 +102,12 @@ public class PartOne {
                             "\n" + "кто живёт и дышит." +
                             " \n Так кто же я?");
                     lionRiddle();
-                    System.out.println("\n" + "Круто-круто! У тебя теперь есть денежки на правую дорогу! ээээ, или ты всё таки решил по левой? Выбираешь левую или правую?");
+                    System.out.println("\n" + "Круто-круто! У тебя теперь есть денежки на правую дорогу! ээээ, или ты всё таки решил по левой?" +
+                            "\n 1 - левую, 2 - правую");
                     wayLeftOrRight();
                 }
             }
-        } else if (way.equals("левую")) {
+        } else if (way == 1) {
             System.out.println("Отважный выбор. Чтож.. где же раздобыть доску? " +
                     "\n" +
                     "\n Слууушай. А вот эта странная огромная сова, что это у неё в лапах?" +

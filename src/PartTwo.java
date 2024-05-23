@@ -1,14 +1,14 @@
 import java.util.Scanner;
 
-public class PartTwo extends PartOne {
+public class PartTwo {
+ int money  = 0;
 
     public void screem() {
         Scanner scanner = new Scanner(System.in);
-        while (scanner.hasNext("[а-я]+")) {
+        while (scanner.hasNext("[А-я]")) {
             System.out.println("Да погромче, она ж не услышит!");
             screem();
         }
-        scanner.next(); //что это?
         System.out.println("Чего кричишь? Я сразу услышала, я просто медленно летаю. Ты вообще знаешь," +
                 "\n сколько мне лет? Разорался! да и доска тяжёлая!" +
                 "\n" +
@@ -22,8 +22,8 @@ public class PartTwo extends PartOne {
     }
 
 
-    public void owl(String way) {
-        if (way.equals("левую")) {
+    public void owl(Integer way) {
+        if (way == 1) {
             screem();
         }
     }
@@ -41,15 +41,16 @@ public class PartTwo extends PartOne {
 
     public void snake() {
         Scanner scanner = new Scanner(System.in);
-        String snake = scanner.nextLine();
-        if (snake.equals("Голубая")) {
+        int snake = scanner.nextInt();
+        if (snake == 1) {
             blueSnake();
-        } else if (snake.equals("Жёлтая")) {
+        } else if (snake == 2) {
             yellowSnake();
         }
     }
 
     public void blueSnake() {
+        this.money = money;
         System.out.println("Штошшшшшшшшш...Вы сделали правильный выбор, я тоже думаю, что голубой куда благородней.." +
                 "\n Итак..господа, найдётся 10 миллионов денег? ");
         if (money >= 10) {
@@ -58,16 +59,17 @@ public class PartTwo extends PartOne {
         } else {
             System.out.println("Даже из большой любви к посетителям скидок я не представляю..." +
                     "\n так что попытайте счастье у Матильды...хах..или вернётесь ко льву? " +
-                    "\n Лев или Матильда?");
+                    "\n 1 - лев, 2 - Матильда");
             snakeOrLion();
         }
     }
 
     public void yellowSnake() {
-        System.out.println("Ребята, привет! Как ваши дела? Меня зовут Матильда, я королевская змейка, как и моя сестра Лора" +
+        System.out.println("\n..." +
+                "\nРебята, привет! Как ваши дела? Меня зовут Матильда, я королевская змейка, как и моя сестра Лора" +
                 "\n Вообще мама говорила, что мы близняшки, хотя откуда у нас разный цвет...+" +
-                "\n ой, заболталась! Я тут снова изучаю теорию вероятностей, необычайно занимательно, должна вас сказать!" +
-                "\n скажите, пожалуйста, подумав, какое моё любимое число? 8, 13 или 22? Осторожно, у вас всего одна попытка" +
+                "\n ой, заболталась! Я тут снова изучаю теорию вероятностей, необычайно занимательно, должна вам сказать!" +
+                "\n скажите, пожалуйста, подумав, какое моё любимое число? 8, 13 или 22? Осторожно, у вас всего одна попытка..." +
                 "\n или вам придётся начать всё заново!");
         favoriteNumberOfSnake();
     }
@@ -92,16 +94,19 @@ public class PartTwo extends PartOne {
 
     public void snakeOrLion() {
         Scanner scanner = new Scanner(System.in);
-        String snakeOrLion = scanner.nextLine();
-        if (snakeOrLion.equals("Лев")) {
-            System.out.println("Пссс, я пошутил, ахахах, вы время видели? Он давно домой ушёл! Целый прайд полдня без хозяина!" +
+        int snakeOrLion = scanner.nextInt();
+        if (snakeOrLion == 1) {
+            System.out.println("Пссс, я пошутила, ахахах, вы время видели? Он давно домой ушёл! Целый прайд полдня без хозяина!" +
                     "\n Скажите спасибо, что я добрая, так бы зря бегали." +
                     "\n Отправляйтесь к Матильде, она - не я, - вас не обидит! ха-ха-ха!");
-        } else if (snakeOrLion.equals("Матильда")) {
+            yellowSnake();
+        } else if (snakeOrLion == 2) {
             System.out.println("Сразу правильное решение" +
                     "\n Отправляйтесь к Матильде, она - не я, - вас не обидит! ха-ха-ха!");
+            yellowSnake();
         } else {
-            System.out.println("Совсем не разберу, что ты сказал... повтори..Лев или Матильда?");
+            System.out.println("Совсем не разберу, что ты сказал... повтори, пожалуйста..." +
+                    "\n 1 -Лев, 2 -Матильда?");
             snakeOrLion();
         }
     }
