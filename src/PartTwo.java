@@ -86,6 +86,7 @@ public class PartTwo {
         } else if ((favoriteNumberOfSnake == 8) || (favoriteNumberOfSnake == 13)) {
             System.out.println("Ребята...логика или хотя бы интуиция - не ваше:(" +
                     "\n мне жаль, но вам придётся вернуться в самое начало...");
+            System.exit(0);
         } else {
             System.out.println("Ээээ, вы вопрос поняли? 8, 13 или 22?");
             favoriteNumberOfSnake();
